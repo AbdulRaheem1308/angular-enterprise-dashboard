@@ -1,0 +1,30 @@
+.dialog-form {
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+mat-dialog-actions {
+  padding: 16px 24px;
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}

@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>{{ isEditMode ? 'Edit User' : 'Add New User' }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="userForm" class="dialog-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Full Name</mat-label>
+      <input matInput formControlName="name" placeholder="John Doe">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" placeholder="john@example.com">
+    </mat-form-field>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="flex-1">
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role">
+          <mat-option value="admin">Admin</mat-option>
+          <mat-option value="manager">Manager</mat-option>
+          <mat-option value="user">User</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="flex-1">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option value="active">Active</mat-option>
+          <mat-option value="inactive">Inactive</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" 
+          [disabled]="userForm.invalid" 
+          (click)="onSubmit()">
+    {{ isEditMode ? 'Update' : 'Create' }}
+  </button>
+</mat-dialog-actions>
