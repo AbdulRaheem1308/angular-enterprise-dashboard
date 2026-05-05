@@ -1,0 +1,62 @@
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.page-header {
+  h1 { margin: 0; font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; }
+  p { margin: 4px 0 0; color: var(--mat-sys-on-surface-variant); }
+}
+
+.settings-card {
+  border-radius: 20px;
+  border: 1px solid var(--mat-sys-outline-variant);
+  overflow: hidden;
+  padding: 0;
+}
+
+.tab-content {
+  padding: 32px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.form-actions {
+  padding-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+
+  .setting-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--mat-sys-on-surface);
+    margin-bottom: 4px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--mat-sys-on-surface-variant);
+  }
+}
+
+mat-divider {
+  margin: 0;
+}
+
+::ng-deep .mat-mdc-tab-body-wrapper {
+  background-color: var(--mat-sys-surface);
+}

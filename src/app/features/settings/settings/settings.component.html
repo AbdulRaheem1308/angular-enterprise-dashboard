@@ -1,0 +1,91 @@
+<div class="settings-container">
+  <header class="page-header">
+    <h1>Account Settings</h1>
+    <p>Manage your profile, security preferences, and system notifications.</p>
+  </header>
+
+  <mat-card class="settings-card">
+    <mat-tab-group [selectedIndex]="selectedTabIndex" (selectedIndexChange)="selectedTabIndex = $event" animationDuration="0ms">
+      <!-- Profile Tab -->
+      <mat-tab label="Profile">
+        <div class="tab-content">
+          <form [formGroup]="profileForm" class="settings-form">
+            <div class="form-grid">
+              <mat-form-field appearance="outline">
+                <mat-label>Full Name</mat-label>
+                <input matInput formControlName="name">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Email Address</mat-label>
+                <input matInput formControlName="email">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Organization</mat-label>
+                <input matInput formControlName="organization">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Timezone</mat-label>
+                <input matInput formControlName="timezone">
+              </mat-form-field>
+            </div>
+            
+            <mat-divider></mat-divider>
+            
+            <div class="form-actions">
+              <button mat-flat-button color="primary" (click)="onSave()">Update Profile</button>
+            </div>
+          </form>
+        </div>
+      </mat-tab>
+
+      <!-- Security Tab -->
+      <mat-tab label="Security">
+        <div class="tab-content">
+          <div class="setting-item">
+            <div class="setting-text">
+              <div class="setting-title">Two-Factor Authentication</div>
+              <p>Add an extra layer of security to your account.</p>
+            </div>
+            <mat-slide-toggle color="primary"></mat-slide-toggle>
+          </div>
+          
+          <mat-divider></mat-divider>
+          
+          <div class="setting-item">
+            <div class="setting-text">
+              <div class="setting-title">Session Management</div>
+              <p>Log out from all other devices and sessions.</p>
+            </div>
+            <button mat-stroked-button color="warn">Logout Others</button>
+          </div>
+        </div>
+      </mat-tab>
+
+      <!-- Notifications Tab -->
+      <mat-tab label="Notifications">
+        <div class="tab-content">
+          <div class="setting-item">
+            <div class="setting-text">
+              <div class="setting-title">Email Notifications</div>
+              <p>Receive weekly summary reports via email.</p>
+            </div>
+            <mat-slide-toggle [checked]="true" color="primary"></mat-slide-toggle>
+          </div>
+
+          <mat-divider></mat-divider>
+
+          <div class="setting-item">
+            <div class="setting-text">
+              <div class="setting-title">Browser Notifications</div>
+              <p>Get real-time alerts for system critical events.</p>
+            </div>
+            <mat-slide-toggle color="primary"></mat-slide-toggle>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+</div>

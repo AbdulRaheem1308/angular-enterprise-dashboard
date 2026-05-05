@@ -1,0 +1,49 @@
+<div class="notifications-container">
+  <header class="page-header">
+    <div class="header-left">
+      <h1>Notification Center</h1>
+      <p>Stay updated with the latest system activities and security alerts.</p>
+    </div>
+    <div class="header-right">
+      <button mat-stroked-button (click)="markAllAsRead()" [disabled]="notifications.length === 0">
+        <mat-icon>done_all</mat-icon> Mark all as read
+      </button>
+    </div>
+  </header>
+
+  <mat-card class="notifications-card">
+    <div class="empty-state" *ngIf="notifications.length === 0 && !isLoading">
+      <mat-icon>notifications_off</mat-icon>
+      <p>No new notifications</p>
+    </div>
+
+    <mat-list *ngIf="notifications.length > 0">
+      <ng-container *ngFor="let notification of notifications; let last = last">
+        <mat-list-item [class.unread]="!notification.read">
+          <div matListItemIcon class="notification-icon" [style.background-color]="getIconColor(notification.title)">
+            <mat-icon>{{ notification.title.includes('Security') ? 'security' : 'notifications' }}</mat-icon>
+          </div>
+          <div matLine class="notification-header">
+            <span class="title">{{ notification.title }}</span>
+            <span class="time">{{ notification.time }}</span>
+          </div>
+          <div matLine class="message">{{ notification.message }}</div>
+          
+          <div matListItemMeta class="actions">
+            <button mat-icon-button (click)="markAsRead(notification.id)" *ngIf="!notification.read" matTooltip="Mark as read">
+              <mat-icon>check_circle_outline</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteNotification(notification.id)" matTooltip="Delete">
+              <mat-icon>delete_outline</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+        <mat-divider *ngIf="!last"></mat-divider>
+      </ng-container>
+    </mat-list>
+
+    <div class="loading-overlay" *ngIf="isLoading">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+  </mat-card>
+</div>

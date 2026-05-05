@@ -1,0 +1,67 @@
+<div class="reports-container">
+  <header class="page-header">
+    <div class="header-left">
+      <h1>Performance Analytics</h1>
+      <p>Comprehensive analysis of platform growth and user engagement.</p>
+    </div>
+    <div class="header-right">
+      <button mat-stroked-button color="primary" class="export-btn" (click)="exportPDF()">
+        <mat-icon>picture_as_pdf</mat-icon> PDF
+      </button>
+      <button mat-flat-button color="primary" class="export-btn" (click)="exportCSV()">
+        <mat-icon>table_view</mat-icon> Export CSV
+      </button>
+    </div>
+  </header>
+
+  <!-- KPI Section -->
+  <div class="kpi-grid">
+    <mat-card *ngFor="let kpi of kpis" class="kpi-card">
+      <mat-card-content>
+        <div class="kpi-icon" [style.background-color]="kpi.color + '15'" [style.color]="kpi.color">
+          <mat-icon>{{ kpi.icon }}</mat-icon>
+        </div>
+        <div class="kpi-data">
+          <div class="kpi-value">{{ kpi.value }}</div>
+          <div class="kpi-label">{{ kpi.label }}</div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="reports-grid">
+    <!-- Comparison Bar Chart -->
+    <mat-card class="report-card main-report">
+      <mat-card-header>
+        <mat-card-title>Year-over-Year Growth</mat-card-title>
+        <mat-card-subtitle>Comparing active engagement trends.</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="chart-wrapper">
+          <canvas baseChart
+            [data]="barChartData"
+            [options]="barChartOptions"
+            [type]="'bar'">
+          </canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Regional Distribution Pie Chart -->
+    <mat-card class="report-card side-report">
+      <mat-card-header>
+        <mat-card-title>User Base by Region</mat-card-title>
+        <mat-card-subtitle>Global market penetration.</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="chart-wrapper">
+          <canvas baseChart
+            [data]="pieChartData"
+            [options]="pieChartOptions"
+            [type]="'pie'">
+          </canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
