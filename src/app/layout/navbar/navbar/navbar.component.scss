@@ -1,0 +1,87 @@
+.navbar {
+  height: var(--header-height);
+  background-color: var(--mat-sys-surface-container);
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  z-index: 100;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.user-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  border-radius: 8px;
+  
+  mat-icon:first-child {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    color: var(--mat-sys-primary);
+  }
+}
+
+// Use ::ng-deep to style the Material Menu overlay
+::ng-deep {
+  .notification-menu {
+    width: 320px !important;
+    max-width: 320px !important;
+    border-radius: 12px !important;
+    margin-top: 10px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+    background: white !important;
+
+    .notification-header {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      padding: 16px 20px !important;
+      background: #f8f9fa !important;
+      border-bottom: 1px solid #eee;
+
+      span:first-child { 
+        font-weight: 700 !important; 
+        font-size: 15px !important; 
+        color: #333 !important; 
+      }
+      
+      .unread-badge {
+        background: #e1bee7 !important;
+        color: #7b1fa2 !important;
+        padding: 4px 12px !important;
+        border-radius: 20px !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+      }
+    }
+
+    .notification-list {
+      max-height: 350px;
+      overflow-y: auto;
+
+      .notification-item {
+        height: auto !important;
+        padding: 12px 20px !important;
+        border-bottom: 1px solid #f0f0f0;
+        
+        .note-content {
+          white-space: normal !important;
+        }
+      }
+    }
+
+    .view-all {
+      width: 100% !important;
+      color: #6200ee !important;
+      font-weight: 600 !important;
+      padding: 12px !important;
+      text-align: center;
+    }
+  }
+}

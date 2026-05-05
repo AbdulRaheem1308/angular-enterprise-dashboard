@@ -1,0 +1,55 @@
+<mat-toolbar color="surface" class="navbar">
+  <button mat-icon-button (click)="toggleSidebar()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  
+  <div class="spacer"></div>
+
+  <button mat-icon-button [matMenuTriggerFor]="notificationMenu" class="nav-button">
+    <mat-icon [matBadge]="unreadCount" matBadgeColor="warn" [matBadgeHidden]="unreadCount === 0">notifications</mat-icon>
+  </button>
+
+  <mat-menu #notificationMenu="matMenu" class="notification-menu">
+    <div class="notification-header">
+      <span>Notifications</span>
+      <span class="unread-badge">{{ unreadCount }} New</span>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="notification-list">
+      <div *ngIf="notifications.length === 0" class="no-notifications">
+        No new notifications
+      </div>
+      <button mat-menu-item *ngFor="let note of notifications" class="notification-item">
+        <mat-icon [ngClass]="note.type">{{ note.type === 'success' ? 'check_circle' : 'info' }}</mat-icon>
+        <div class="note-content">
+          <p class="note-message">{{ note.message }}</p>
+          <span class="note-time">{{ note.createdAt | date:'short' }}</span>
+        </div>
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+    <button mat-button class="view-all" routerLink="/notifications">View All Notifications</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="userMenu" class="user-button">
+    <mat-icon>account_circle</mat-icon>
+    <span>{{ userName }}</span>
+    <mat-icon>expand_more</mat-icon>
+  </button>
+
+    <mat-menu #userMenu="matMenu" xPosition="before">
+      <button mat-menu-item (click)="navigateToSettings(0)">
+        <mat-icon>person</mat-icon>
+        <span>Profile</span>
+      </button>
+      <button mat-menu-item (click)="navigateToSettings(1)">
+        <mat-icon>security</mat-icon>
+        <span>Security</span>
+      </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="onLogout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>

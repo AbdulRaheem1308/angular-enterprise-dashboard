@@ -1,0 +1,17 @@
+<div class="app-layout">
+
+  <app-sidebar />
+
+  <div class="main-content" [class.collapsed]="isCollapsed">
+
+    <app-navbar />
+
+    <div class="page-container">
+      <router-outlet />
+    </div>
+
+    <app-footer />
+
+  </div>
+
+</div>
