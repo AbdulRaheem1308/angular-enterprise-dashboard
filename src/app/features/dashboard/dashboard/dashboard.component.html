@@ -1,0 +1,122 @@
+<div class="dashboard-container">
+  <header class="page-header">
+    <div class="header-left">
+      <h1>Enterprise Insights</h1>
+      <p>Real-time analytics and system monitoring dashboard.</p>
+    </div>
+    <div class="header-right">
+      <div class="health-indicators">
+        <div class="health-item">
+          <span class="dot online"></span> API: Online
+        </div>
+        <div class="health-item">
+          <span class="dot online"></span> DB: Cloud
+        </div>
+      </div>
+      <button mat-flat-button color="primary" (click)="exportReport()">
+        <mat-icon>download</mat-icon> Export Report
+      </button>
+    </div>
+  </header>
+
+  <!-- Stats Grid -->
+  <div class="stats-grid">
+    <mat-card *ngFor="let stat of stats" class="stat-card">
+      <mat-card-content>
+        <div class="stat-header">
+          <div class="stat-icon" [ngClass]="stat.color">
+            <mat-icon>{{ stat.icon }}</mat-icon>
+          </div>
+          <div class="stat-trend" [ngClass]="stat.color">
+            {{ stat.trend }} <mat-icon>trending_up</mat-icon>
+          </div>
+        </div>
+        <div class="stat-body">
+          <div class="stat-value">{{ stat.value }}</div>
+          <div class="stat-title">{{ stat.title }}</div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Charts & Activity Row -->
+  <div class="dashboard-row">
+    <!-- Main Revenue Chart -->
+    <mat-card class="chart-card main-chart">
+      <mat-card-header>
+        <mat-card-title>Revenue Growth (Projected)</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="chart-wrapper">
+          <canvas baseChart
+            [data]="lineChartData"
+            [options]="lineChartOptions"
+            [type]="'line'">
+          </canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Distribution Pie Chart -->
+    <mat-card class="chart-card secondary-chart">
+      <mat-card-header>
+        <mat-card-title>Revenue Mix</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="chart-wrapper">
+          <canvas baseChart
+            [data]="pieChartData"
+            [options]="pieChartOptions"
+            [type]="'pie'">
+          </canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Bottom Row: Activity & System -->
+  <div class="dashboard-row bottom-row">
+    <!-- Recent Activity -->
+    <mat-card class="activity-card">
+      <mat-card-header>
+        <mat-card-title>System Activity Log</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="activity-list">
+          <div *ngFor="let item of recentActivity" class="activity-item">
+            <div class="activity-icon" [ngClass]="item.color">
+              <mat-icon>{{ item.icon }}</mat-icon>
+            </div>
+            <div class="activity-details">
+              <p class="activity-text"><strong>{{ item.user }}</strong> {{ item.action }} <span>{{ item.target }}</span></p>
+              <span class="activity-time">{{ item.time }}</span>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Quick Actions -->
+    <mat-card class="actions-card">
+      <mat-card-header>
+        <mat-card-title>Quick Access</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="actions-grid">
+          <button mat-stroked-button class="quick-btn" (click)="inviteUser()">
+            <mat-icon>person_add</mat-icon> Invite User
+          </button>
+          <button mat-stroked-button class="quick-btn" (click)="navigateTo('/settings')">
+            <mat-icon>settings</mat-icon> Config
+          </button>
+          <button mat-stroked-button class="quick-btn" (click)="navigateTo('/reports')">
+            <mat-icon>help</mat-icon> Support
+          </button>
+          <button mat-stroked-button class="quick-btn" (click)="navigateTo('/reports')">
+            <mat-icon>info</mat-icon> Logs
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
