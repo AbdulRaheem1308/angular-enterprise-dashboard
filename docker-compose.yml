@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ../enterprise-dashboard-api
+    ports:
+      - "3000:3000"
+    env_file:
+      - ../enterprise-dashboard-api/.env
+    restart: always
+
+  frontend:
+    build: .
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always
