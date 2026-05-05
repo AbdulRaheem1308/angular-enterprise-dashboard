@@ -9,7 +9,7 @@ import { environment } from '../../../../environment';
 export class DashboardService {
   private apiUrl = `${environment.apiBaseUrl}/dashboard`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getStats(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/stats`);
