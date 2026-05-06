@@ -1,4 +1,6 @@
-# Angular Enterprise Dashboard
+# Angular Enterprise Dashboard 🚀
+
+**🔗 [Live Demo](https://angular-enterprise-dashboard.web.app)** | **🔗 [Backend API Status](https://enterprise-dashboard-api-2g74.onrender.com/api/health)**
 
 A production-ready, enterprise-grade admin dashboard built with **Angular 21** and **Angular Material**. This project demonstrates scalable architecture, advanced routing, role-based access control (RBAC), and seamless backend integration.
 
