@@ -14,11 +14,16 @@ A production-ready, enterprise-grade admin dashboard built with **Angular 21** a
 - **Modern UI/UX**: Premium design using Angular Material 3, responsive layout with a collapsible sidebar, and polished glassmorphism effects.
 - **Secure Communication**: Automated JWT handling via HTTP Interceptors.
 
-## 🔑 Demo Credentials
-- **Email**: `admin@example.com`
-- **Password**: `password123`
+## 🔑 Demo Credentials (RBAC)
+Explore the dashboard's Role-Based Access Control:
 
-*(Alternatively, you can create a new account using the Register page!)*
+| Role | Email | Password |
+| :--- | :--- | :--- |
+| **Admin** | `admin@example.com` | `password123` |
+| **Manager** | `manager@example.com` | `password123` |
+| **User** | `john@example.com` | `password123` |
+
+*(Note: Features and views dynamically adjust based on the logged-in user's role.)*
 
 ## 🛠️ Tech Stack
 
