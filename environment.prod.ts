@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://api.yourdomain.com/api'
+  apiBaseUrl: 'https://enterprise-dashboard-api-2g74.onrender.com'
 };
