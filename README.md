@@ -14,6 +14,12 @@ A production-ready, enterprise-grade admin dashboard built with **Angular 21** a
 - **Modern UI/UX**: Premium design using Angular Material 3, responsive layout with a collapsible sidebar, and polished glassmorphism effects.
 - **Secure Communication**: Automated JWT handling via HTTP Interceptors.
 
+## 🔑 Demo Credentials
+- **Email**: `admin@example.com`
+- **Password**: `password123`
+
+*(Alternatively, you can create a new account using the Register page!)*
+
 ## 🛠️ Tech Stack
 
 - **Frontend**: Angular 21, TypeScript, RxJS.
